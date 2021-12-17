@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: musicalapp
+spec:
+  selector:
+    matchLabels:
+      app: musicalapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: musicalapp
+    spec:
+      containers:
+        - image: "220553481290.dkr.ecr.us-west-2.amazonaws.com/rockstar"
+          imagePullPolicy: Always
+          name: musicalapp
+          ports:
+            - containerPort: 80

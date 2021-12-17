@@ -1,0 +1,22 @@
+#version: '3.8'
+# see here https://docs.docker.com/compose/compose-file/compose-versioning/
+version: '3.1'
+
+services:
+
+rockstar:
+    stdin_open: true
+    build:
+      context: ./rockstar
+      dockerfile: ./rockstar/dockerfile
+    # ~dk same problem here..
+    #volumes:
+      #- './fe:/usr/src/app'
+      #- '/usr/src/app/node_modules'
+    ports:
+      - 3007:80
+    environment:
+      - NODE_ENV=development
+
+    networks:
+      - frontend
